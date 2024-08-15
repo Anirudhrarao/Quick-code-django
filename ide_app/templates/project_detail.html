@@ -1,0 +1,37 @@
+{% load static %}
+{% include "base.html" %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="user-icon mr-3">
+                                <img src="{% static 'icon/user_icon.gif' %}" alt="User Icon" width="48" height="48">
+                            </div>
+                            <div>
+                                <h2 class="card-title">{{ project.name }}</h2>
+                                <p class="card-text">Owner: {{ project.owner }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Files</h4>
+                            <ul class="list-group">
+                                {% for file in project.file_set.all %}
+                                    <li class="list-group-item">
+                                        <a href="{% url 'file_detail' file.id %}" style="color: #333;">{{ file.name }}</a>
+                                    </li>
+                                {% empty %}
+                                    <li class="list-group-item">No files found.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

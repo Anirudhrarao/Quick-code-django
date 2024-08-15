@@ -1,0 +1,47 @@
+{% load static %}
+{% include "base.html" %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="user-icon mr-3">
+                                <img src="{% static 'icon/user_icon.gif' %}" alt="User Icon" width="48" height="48">
+                            </div>
+                            <div>
+                                <h2 class="card-title">{{ user.username }}</h2>
+                                <p class="card-text">{{ user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-4">
+                            <h4>Change Password</h4>
+                            <button class="btn btn-primary">Change Password</button>
+                        </div>
+                        <div>
+                            <h4>Projects</h4>
+                            <ul class="list-group">
+                                {% for project in projects %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a class="custom-link" href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+                                        <a href="{% url 'delete_project' project.id %}" class="btn btn-danger btn-sm">
+                                            Delete
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <a href="{% url 'create_project' %}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Create Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

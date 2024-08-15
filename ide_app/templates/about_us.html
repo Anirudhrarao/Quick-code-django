@@ -1,0 +1,29 @@
+{% load static %}
+{% include "base.html" %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}"> <!-- Link to your CSS file -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+{% block content %}
+<main>
+        <div class="container">
+            <section id="about-me">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="{% static 'images/Anirudh.jpg' %}" alt="Aniruddh">
+                    </div>
+                    <div class="about-text">
+                        <p style="text-align: justify;">Hi, I'm Aniruddh, a backend developer with a strong background in data science. I have extensive experience in building end-to-end production-grade applications. Currently, I am enhancing my machine learning skills, focusing on supervised and unsupervised learning algorithms.</p>
+                        <h3>Skills and Experience</h3>
+                        <ul>
+                            <li>Backend Development</li>
+                            <li>Data Science</li>
+                            <li>Machine Learning</li>
+                            <li>Production-Grade Application Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock  %}

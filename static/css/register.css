@@ -1,0 +1,16 @@
+/* register.css */
+.btn-primary {
+    background-color: #5c6bc0;
+    /* Set button background color */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #7986cb;
+    /* Set button hover background color */
+}
+
+.card-title {
+    color: #5c6bc0;
+    /* Set h2 color */
+}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/code.css' %}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card custom-card bg-color">
+                <div class="card-content text-center bg-color">
+                    <strong class="card-title">{{ file.name }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card custom-card">
+                <div class="card-content">
+                    <div class="highlighted-code">
+                        {{ highlighted_code|safe }}
+                    </div>
+                    <style>
+                        {{ css_styles|safe }}
+                    </style>
+                </div>
+                <form action="{% url 'ide' %}" method="post">
+                    {% csrf_token %}
+                    <textarea name="code" class="d-none">{{ file.content }}</textarea>
+                    <button type="submit" class="btn btn-primary">Run Code</button>
+                </form>
+            </div>
+            <!-- Update Code Button -->
+            <div class="mt-3">
+                <a href="{% url 'update_code' file.id %}" class="btn btn-sm btn-secondary">Update Code</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
